@@ -1,4 +1,13 @@
+import javax.swing.*;
+import java.text.DecimalFormat;
+
 public class LemonadeStand {
+
+
+    public static double price16 = 0.50;
+    public static double price20 = 0.99;
+    public static double tax = 7.5;
+
 
     /*
         You run a very successful Lemonade Stand.
@@ -16,6 +25,32 @@ public class LemonadeStand {
      */
 
     public static void main(String[] args) {
+
+        //Prompt for number 16's
+        int num16 = Integer.parseInt(JOptionPane.showInputDialog("How many 16 oz cups"));
+        //Prompt for number of 20's
+        int num20 = Integer.parseInt(JOptionPane.showInputDialog("How many 20 oz cups"));
+        //calculate cost and output
+        calculateCost(num16, num20);
+    }
+
+    public static void calculateCost(int num16, int num20) {
+
+        DecimalFormat round = new DecimalFormat("$#,###.00");
+        //cost of 16's
+        double cost16 = num16 * price16;
+        //cost of 20's
+        double cost20 = num20 * price20;
+        //total cost with tax
+        double totalCost = (cost16 + cost20) * (1 + tax / 100.0);
+
+        String message = "Your order:";
+        message += "\nNumber of 16 oz: " + num16;
+        message += "\nNumber of 20 0z: " + num20;
+        message += "\n\nYour total is: " + round.format(totalCost);
+
+        JOptionPane.showMessageDialog(null, message);
+
 
     }
 
